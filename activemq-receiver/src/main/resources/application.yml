@@ -1,0 +1,7 @@
+spring:
+  jms:
+    pub-sub-domain: false
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
