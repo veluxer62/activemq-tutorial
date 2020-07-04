@@ -11,7 +11,7 @@ class MessageSender(private val jmsTemplate: JmsTemplate) {
 
     fun send(message: OrderMessage) {
         logger.info("Producer Message -> [$message]")
-        jmsTemplate.convertAndSend("ORDER", message)
+        jmsTemplate.convertAndSend("TOPIC.ORDER", message)
     }
 }
 
