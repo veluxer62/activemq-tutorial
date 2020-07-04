@@ -9,17 +9,12 @@ import java.io.Serializable
 class MessageSender(private val jmsTemplate: JmsTemplate) {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    fun sendTopic(message: SampleData) {
-        logger.info("Sender Message -> [$message]")
-        jmsTemplate.convertAndSend("TOPIC.TEST", message)
-    }
-
-    fun sendVirtual(message: SampleData) {
-        logger.info("Sender Message -> [$message]")
-        jmsTemplate.convertAndSend("VirtualTopic.TEST", message)
+    fun send(message: OrderMessage) {
+        logger.info("Producer Message -> [$message]")
+        jmsTemplate.convertAndSend("ORDER", message)
     }
 }
 
-data class SampleData(
-        val body: String = ""
+data class OrderMessage(
+        val payload: String = ""
 ) : Serializable

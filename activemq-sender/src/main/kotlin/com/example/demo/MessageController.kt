@@ -9,12 +9,7 @@ class MessageController(private val messageSender: MessageSender) {
 
     @PostMapping("/topic/sampling")
     fun sampleTopic(@RequestBody message: String) {
-        messageSender.sendTopic(SampleData(body = message))
-    }
-
-    @PostMapping("/virtual/sampling")
-    fun sampleVirtual(@RequestBody message: String) {
-        messageSender.sendVirtual(SampleData(body = message))
+        messageSender.send(OrderMessage(payload = message))
     }
 
 }
