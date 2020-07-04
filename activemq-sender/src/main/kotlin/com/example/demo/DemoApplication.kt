@@ -7,5 +7,10 @@ import org.springframework.boot.runApplication
 class DemoApplication
 
 fun main(args: Array<String>) {
-    runApplication<DemoApplication>(*args)
+    val app = runApplication<DemoApplication>(*args)
+    val sender = app.getBean(MessageSender::class.java)
+
+    (1..10).forEach {
+        sender.send(OrderMessage(payload = "test-message-${it}"))
+    }
 }
