@@ -9,7 +9,7 @@ import java.io.Serializable
 class MessageListener {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    @JmsListener(destination = "VirtualTopicConsumers.server1.TOPIC.ORDER")
+    @JmsListener(destination = "ORDER")
     fun listen(message: OrderMessage) {
         logger.info("Consumer Listen - > $message")
     }
