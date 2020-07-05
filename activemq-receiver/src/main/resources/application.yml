@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   jms:
-    pub-sub-domain: true
+    pub-sub-domain: false
   activemq:
     broker-url: tcp://localhost:61616
     user: admin
