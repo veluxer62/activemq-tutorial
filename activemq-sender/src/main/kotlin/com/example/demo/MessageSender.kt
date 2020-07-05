@@ -12,10 +12,7 @@ class MessageSender(private val jmsTemplate: JmsTemplate) {
 
     fun send(message: OrderMessage) {
         logger.info("Producer Message -> [$message]")
-        jmsTemplate.convertAndSend("ORDER", message) {
-            it.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, 3000)
-            it
-        }
+        jmsTemplate.convertAndSend("PAYMENT2", message)
     }
 }
 

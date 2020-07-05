@@ -9,9 +9,10 @@ import java.io.Serializable
 class MessageListener {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    @JmsListener(destination = "ORDER")
+    @JmsListener(destination = "PAYMENT2")
     fun listen(message: OrderMessage) {
         logger.info("Consumer Listen - > $message")
+        val err = 1 / 0
     }
 }
 
