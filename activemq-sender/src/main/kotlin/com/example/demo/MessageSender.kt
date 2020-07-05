@@ -1,5 +1,6 @@
 package com.example.demo
 
+import org.apache.activemq.ScheduledMessage
 import org.slf4j.LoggerFactory
 import org.springframework.jms.core.JmsTemplate
 import org.springframework.stereotype.Component
@@ -11,7 +12,10 @@ class MessageSender(private val jmsTemplate: JmsTemplate) {
 
     fun send(message: OrderMessage) {
         logger.info("Producer Message -> [$message]")
-        jmsTemplate.convertAndSend("TOPIC.ORDER", message)
+        jmsTemplate.convertAndSend("ORDER", message) {
+            it.setLongProperty(ScheduledMessage.AMQ_SCHEDULED_DELAY, 3000)
+            it
+        }
     }
 }
 

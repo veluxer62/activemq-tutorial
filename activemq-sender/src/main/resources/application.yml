@@ -1,8 +1,6 @@
 server:
   port: 8080
 spring:
-  jms:
-    pub-sub-domain: true
   activemq:
     broker-url: tcp://localhost:61616
     user: admin
